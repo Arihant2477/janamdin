@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday!</title>
+  <style>
+    body {
+      margin: 0;
+      background: #e6ccf5;
+      font-family: 'Comic Sans MS', cursive;
+      overflow: hidden;
+    }
+    .container {
+      text-align: center;
+      padding-top: 10vh;
+      color: #6a1b9a;
+    }
+    h1 { font-size: 3.5em; text-shadow: 2px 2px 5px #fff; }
+    p { font-size: 1.5em; margin-bottom: 2em; }
+    .btn {
+      padding: 15px 30px;
+      font-size: 1.2em;
+      background: #ab47bc;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .btn:hover { background: #8e24aa; }
+
+    .border-lights {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      border: 10px dashed white;
+      animation: flash 1s infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes flash {
+      0% { border-color: #ff69b4; }
+      50% { border-color: #ffd700; }
+      100% { border-color: #7fff00; }
+    }
+
+    .balloon, .confetti {
+      position: absolute;
+      animation: float 6s infinite ease-in-out;
+    }
+
+    .balloon {
+      width: 60px; height: 80px;
+      background: radial-gradient(circle, pink 0%, deeppink 100%);
+      border-radius: 60%;
+    }
+
+    .balloon::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      width: 2px;
+      height: 20px;
+      background: #333;
+    }
+
+    .confetti {
+      width: 10px;
+      height: 10px;
+      background-color: #ff69b4;
+      animation: confettiFall 3s infinite ease-in;
+    }
+
+    @keyframes confettiFall {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh); }
+      100% { transform: translateY(-150px); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="border-lights"></div>
+  <div class="container">
+    <h1>🎉 Happy Birthday, Beautiful! 🎂</h1>
+    <p>This is your magical day. Let the surprises begin! 💖</p>
+    <button class="btn" onclick="location.href='finalpage.html'">Next Page ➡️</button>
+  </div>
+
+  <script>
+    for (let i = 0; i < 10; i++) {
+      const b = document.createElement("div");
+      b.classList.add("balloon");
+      b.style.left = Math.random() * 100 + "vw";
+      b.style.animationDuration = (4 + Math.random() * 3) + "s";
+      document.body.appendChild(b);
+    }
+
+    for (let i = 0; i < 100; i++) {
+      const c = document.createElement("div");
+      c.classList.add("confetti");
+      c.style.left = Math.random() * 100 + "vw";
+      c.style.top = Math.random() * -100 + "px";
+      c.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+      c.style.animationDuration = (2 + Math.random() * 3) + "s";
+      document.body.appendChild(c);
+    }
+  </script>
+
+</body>
+</html>
